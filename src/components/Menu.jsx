@@ -232,7 +232,7 @@ export default function Menu() {
         >shoes</button>
       </div>
 
-      <div className='flex flex-wrap justify-center items-center mt-4'>
+      <div className='flex flex-wrap justify-start lg:px-[10%] mt-4'>
         {fullMenu}
       </div>
     </div>
