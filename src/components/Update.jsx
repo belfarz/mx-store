@@ -90,7 +90,7 @@ export default function Update() {
             images: imageURLs
         };
         console.log(formData)
-        axios.post("http://localhost:3122/additem", formData).then((response) => {
+        axios.post("https://menu-backend-2nhl.onrender.com/additem", formData).then((response) => {
 
             console.log(response.data)
         }).catch((Error) => {

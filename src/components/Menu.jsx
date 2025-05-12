@@ -9,7 +9,7 @@ export default function Menu() {
   const [sampledata, setSampleData] = useState([])
 
   useEffect(()=>{
-    axios.get("http://localhost:3122/api/store").then((response)=>{
+    axios.get("https://menu-backend-2nhl.onrender.com/api/store").then((response)=>{
       setSampleData(response.data)
       console.log(response.data)
     }).catch((Error)=>{
