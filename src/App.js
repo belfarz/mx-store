@@ -1,5 +1,5 @@
 import "./App.css";
-import "react-toastify/ReactToastify.css"
+import "react-toastify/ReactToastify.css";
 import {
   RouterProvider,
   createBrowserRouter,
@@ -8,32 +8,31 @@ import {
 } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import AnimatedRoute from "./components/AnimatedRoute";
-import Layout from "./components/Layout";
-import Buttons from "./components/Buttons";
 import Menu from "./components/Menu";
-import Home from "./components/Home";
 import { ToastContainer } from "react-toastify";
+import Update from "./components/Update";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path=":id" element={<Buttons />} />
-        <Route path=":id/menu" element={
-          <AnimatePresence mode="wait" >
-          <AnimatedRoute>
-            <Menu />
-          </AnimatedRoute>
-        </AnimatePresence>
-        } />
+      <Route
+        path="/"
+        element={
+          <AnimatePresence mode="wait">
+            <AnimatedRoute>
+              <Menu />
+            </AnimatedRoute>
+          </AnimatePresence>
+        }
+      >
+        <Route path="add" element={<Update />}  />
       </Route>
     )
   );
   return (
     <>
-    <RouterProvider router={router} />
-    <ToastContainer />
+      <RouterProvider router={router} />
+      <ToastContainer />
     </>
   );
 }

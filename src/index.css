@@ -7,7 +7,7 @@
   font-family: "Inter", sans-serif;
 }
 nav{
-  box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+  box-shadow: rgba(0,0,0,.1);
 }
 .nav--logo{
   height: 2rem;
@@ -54,6 +54,33 @@ nav{
   font-weight: bold;
   text-transform: capitalize;
 }
+
+
+.swiper {
+  width: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  object-fit: cover;
+}
+
+#imageContainer{
+ 
+  border: 2px dashed black;
+}
+
 
 @media (max-width: 308px) {
   nav .img{

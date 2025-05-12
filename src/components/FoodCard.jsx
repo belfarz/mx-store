@@ -8,20 +8,19 @@ export default function FoodCard({ food }) {
 
     return (
         <>
-            <div className='food--card flex flex-col justify-center items-center sm:w-4/5 max-w-[400px]  m-4  '>
-                {/* <img src={food.image} alt="" className=' ' /> */}
-                <div
-                    className="relative w-full h-[40vh] bg-cover bg-center"
-                    style={{ backgroundImage: `url(${food.image})` }}
-                ></div>
-                <div className='flex flex-col justify-center items-start p-6 '>
-                    <h1 className='text-2xl font-semibold mb-2' >{food.name}</h1>
-                    <p className='font-light mb-6'>{food.description}</p>
-                    <div className='flex justify-between w-full mb-6'>
-                        <span className=' text-xl font-bold'>Price</span>
-                        <span className=' text-xl'>${food.price}</span>
-                    </div>
-                    <span onClick={() => setOpen(true)} className=' bg-yellow-500 flex items-center justify-center w-full font-bold p-4'>Add to order</span>
+            <div 
+                onClick={() => setOpen(true)}
+                className='food--card flex flex-col justify-center items-center w-1/2 gap-2 mt-2 max-w-[400px]'
+            >
+                <div>
+                    <img src={food.images?.[0]} alt="" 
+                    className="relative w-full h-[20vh] bg-cover bg-center"
+                    />
+                </div>
+                <div className=' w-full flex flex-col justify-center items-start p-6 '>
+                    <span className=' mb-2 text-center w-full' >{food.name}</span>
+                    <span className='text-center w-full'>${food.price}</span>
+                    <span onClick={() => setOpen(true)} className=' bg-yellow-500 flex items-center justify-center w-full font-bold p-3 mt-1 rounded-tl-[36px] rounded-br-[36px] '>Add to order</span>
                 </div>
             </div>
 

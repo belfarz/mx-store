@@ -1,182 +1,189 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import { useSearchParams } from 'react-router-dom'
 import FoodCard from './FoodCard';
 import Header from './Header';
+import axios from 'axios';
 
 export default function Menu() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [sampledata, setSampleData] = useState([])
+
+  useEffect(()=>{
+    axios.get("http://localhost:3122/api/store").then((response)=>{
+      setSampleData(response.data)
+      console.log(response.data)
+    }).catch((Error)=>{
+      console.log(Error)
+    })
+
+  },[])
   
-  const sampledata = [
+  const sampleData = [
+    // 📱 iPhone
     {
-      id: "100",
-      name: "Caesar Salad",
-      description: "Crisp romaine lettuce with Caesar dressing, croutons, and Parmesan cheese.",
-      type: "pastries",
-      price: 7.99,
-      image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445",
+      id: "200",
+      name: "iPhone 13 (128GB, (PRODUCT)RED)",
+      description: "6.1-inch Super Retina XDR display, A15 Bionic chip, 5G capable, and dual-camera system.",
+      type: "iphone",
+      price: 799.00,
+      image: "https://res.cloudinary.com/dwcha1sud/image/upload/v1746714085/njlmecnwvly8wfeqwuyn.png",
       addOns: [
-        { id: "1", name: "Grilled Chicken", price: 3.0 },
-        { id: "2", name: "Bacon Bits", price: 1.5 },
-        { id: "3", name: "Extra Parmesan", price: 1.0 }
+        { id: "1", name: "AppleCare+", price: 149.00 },
+        { id: "2", name: "MagSafe Charger", price: 39.00 },
+        { id: "3", name: "Silicone Case", price: 49.00 }
       ]
     },
     {
-      id: "101",
-      name: "Spaghetti Carbonara",
-      description: "Spaghetti with creamy carbonara sauce, pancetta, and Parmesan cheese.",
-      type: "brunch",
-      price: 14.99,
-      image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445",
+      id: "201",
+      name: "iPhone 13 Pro Max (256GB, Sierra Blue)",
+      description: "6.7-inch Super Retina XDR display with ProMotion, A15 Bionic chip, and advanced camera system.",
+      type: "iphone",
+      price: 1099.00,
+      image: "https://m.media-amazon.com/images/I/61i8Vjb17SL._AC_SX679_.jpg",
       addOns: [
-        { id: "1", name: "Extra Pancetta", price: 2.0 },
-        { id: "2", name: "Garlic Bread", price: 2.5 },
-        { id: "3", name: "Parmesan Cheese", price: 1.0 }
+        { id: "1", name: "Leather Wallet with MagSafe", price: 59.00 },
+        { id: "2", name: "Screen Protector", price: 29.00 },
+        { id: "3", name: "Lightning to USB-C Cable", price: 19.00 }
       ]
     },
     {
-      id: "102",
-      name: "Tiramisu",
-      description: "Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cream.",
-      type: "brunch",
-      price: 6.99,
-      image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445",
+      id: "202",
+      name: "iPhone 12 Pro Max (256GB, Graphite)",
+      description: "6.7-inch Super Retina XDR display, A14 Bionic chip, and LiDAR scanner for Night mode portraits.",
+      type: "iphone",
+      price: 999.00,
+      image: "https://m.media-amazon.com/images/I/71MHTD3uL4L._AC_SX679_.jpg",
       addOns: [
-        { id: "1", name: "Extra Mascarpone", price: 1.5 },
-        { id: "2", name: "Chocolate Shavings", price: 1.0 },
-        { id: "3", name: "Espresso Shot", price: 2.0 }
+        { id: "1", name: "MagSafe Duo Charger", price: 129.00 },
+        { id: "2", name: "Clear Case with MagSafe", price: 49.00 },
+        { id: "3", name: "USB-C Power Adapter", price: 19.00 }
+      ]
+    },
+  
+    // 📱 Samsung
+    {
+      id: "203",
+      name: "Samsung Galaxy S21 5G (128GB, Phantom Gray)",
+      description: "6.2-inch Dynamic AMOLED 2X display, Exynos 2100 processor, and pro-grade camera system.",
+      type: "samsung",
+      price: 699.99,
+      image: "https://m.media-amazon.com/images/I/81kfA-GtWwL._AC_SX679_.jpg",
+      addOns: [
+        { id: "1", name: "Samsung Care+", price: 129.00 },
+        { id: "2", name: "Wireless Charger", price: 59.99 },
+        { id: "3", name: "Protective Standing Cover", price: 39.99 }
       ]
     },
     {
-      id: "103",
-      name: "Garlic Bread",
-      description: "Toasted bread with garlic butter and herbs.",
-      type: "pastries",
-      price: 4.99,
-      image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445",
+      id: "204",
+      name: "Samsung Galaxy S21 Ultra 5G (256GB, Phantom Black)",
+      description: "6.8-inch Dynamic AMOLED 2X display, 108MP camera, and S Pen support.",
+      type: "samsung",
+      price: 1199.99,
+      image: "https://m.media-amazon.com/images/I/91dLTREdG1L._AC_SX679_.jpg",
       addOns: [
-        { id: "1", name: "Cheese", price: 1.0 },
-        { id: "2", name: "Marinara Sauce", price: 0.5 },
-        { id: "3", name: "Herb Butter", price: 0.5 }
+        { id: "1", name: "S Pen", price: 49.99 },
+        { id: "2", name: "Silicone Cover", price: 29.99 },
+        { id: "3", name: "45W Power Adapter", price: 49.99 }
       ]
     },
     {
-      id: "104",
-      name: "Grilled Salmon",
-      description: "Fresh salmon fillet grilled to perfection, served with lemon butter sauce.",
-      type: "brunch",
-      price: 18.99,
-      image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445",
+      id: "205",
+      name: "Samsung Galaxy S21 FE 5G (128GB, Olive)",
+      description: "6.4-inch AMOLED display, Snapdragon 888 processor, and triple-lens camera system.",
+      type: "samsung",
+      price: 599.99,
+      image: "https://m.media-amazon.com/images/I/81cHpJNr07L._AC_SX679_.jpg",
       addOns: [
-        { id: "1", name: "Lemon Wedges", price: 0.5 },
-        { id: "2", name: "Garlic Butter", price: 1.0 },
-        { id: "3", name: "Grilled Vegetables", price: 2.5 }
+        { id: "1", name: "Clear View Cover", price: 49.99 },
+        { id: "2", name: "Wireless Charger Duo", price: 89.99 },
+        { id: "3", name: "Galaxy Buds Pro", price: 199.99 }
+      ]
+    },
+  
+    // 👕 Clothes
+    {
+      id: "206",
+      name: "Levi's Men's 501 Original Fit Jeans",
+      description: "Iconic straight fit jeans with button fly and classic five-pocket styling.",
+      type: "clothes",
+      price: 59.99,
+      image: "https://m.media-amazon.com/images/I/81eA+2e7UOL._AC_SX679_.jpg",
+      addOns: [
+        { id: "1", name: "Leather Belt", price: 25.00 },
+        { id: "2", name: "Graphic T-Shirt", price: 19.99 },
+        { id: "3", name: "Denim Jacket", price: 89.99 }
       ]
     },
     {
-      id: "105",
-      name: "Mushroom Risotto",
-      description: "Creamy risotto with mushrooms.",
-      type: "brunch",
-      price: 15.99,
-      image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445",
+      id: "207",
+      name: "Levi's Men's 501 '90s Jeans",
+      description: "Slouchy, looser fit reflective of the '90s era's carefree aesthetic.",
+      type: "clothes",
+      price: 98.00,
+      image: "https://m.media-amazon.com/images/I/71K+0+5R7PL._AC_SX679_.jpg",
       addOns: [
-        { id: "1", name: "Truffle Oil", price: 3.0 },
-        { id: "2", name: "Parmesan Cheese", price: 1.0 },
-        { id: "3", name: "Grilled Chicken", price: 3.0 }
+        { id: "1", name: "Vintage T-Shirt", price: 29.99 },
+        { id: "2", name: "Canvas Belt", price: 19.99 },
+        { id: "3", name: "Plaid Shirt", price: 39.99 }
       ]
     },
     {
-      id: "106",
-      name: "Chicken Wings",
-      description: "Crispy chicken wings tossed in a tangy buffalo sauce.",
-      type: "brunch",
-      price: 10.99,
-      image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445",
+      id: "208",
+      name: "Levi's Men's 501 Shrink-to-Fit Jeans",
+      description: "Original shrink-to-fit jeans that mold to your body over time.",
+      type: "clothes",
+      price: 69.50,
+      image: "https://m.media-amazon.com/images/I/71xA6Zz6G9L._AC_SX679_.jpg",
       addOns: [
-        { id: "1", name: "Ranch Dressing", price: 0.5 },
-        { id: "2", name: "Extra Sauce", price: 1.0 },
-        { id: "3", name: "Celery Sticks", price: 0.5 }
+        { id: "1", name: "Denim Shirt", price: 49.99 },
+        { id: "2", name: "Leather Wallet", price: 39.99 },
+        { id: "3", name: "Beanie Hat", price: 19.99 }
+      ]
+    },
+  
+    // 👟 Shoes
+    {
+      id: "209",
+      name: "Nike Air Max 90 Men's Shoes - White/Team Red",
+      description: "Classic design with visible Air cushioning for all-day comfort.",
+      type: "shoes",
+      price: 130.00,
+      image: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/7e5d9a3f-1b2e-4f4e-9d6c-7e5d9a3f1b2e/air-max-90-mens-shoes-KkLcGR.png",
+      addOns: [
+        { id: "1", name: "No-Show Socks (3-Pack)", price: 12.00 },
+        { id: "2", name: "Shoe Cleaner Kit", price: 15.00 },
+        { id: "3", name: "Extra Laces", price: 5.00 }
       ]
     },
     {
-      id: "107",
-      name: "Greek Salad",
-      description: "Fresh salad with cucumbers, tomatoes, olives, feta cheese, and a Greek vinaigrette.",
-      type: "brunch",
-      price: 8.99,
-      image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445",
+      id: "210",
+      name: "Nike Air Max 90 Men's Shoes - White/Light Smoke Grey",
+      description: "Produced at the intersection of art, music and culture, this champion running shoe helped define the '90s.",
+      type: "shoes",
+      price: 130.00,
+      image: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/7e5d9a3f-1b2e-4f4e-9d6c-7e5d9a3f1b2e/air-max-90-mens-shoes-KkLcGR.png",
       addOns: [
-        { id: "1", name: "Grilled Chicken", price: 3.0 },
-        { id: "2", name: "Pita Bread", price: 1.5 },
-        { id: "3", name: "Extra Feta", price: 1.0 }
+        { id: "1", name: "Ankle Socks (3-Pack)", price: 12.00 },
+        { id: "2", name: "Shoe Deodorizer", price: 10.00 },
+        { id: "3", name: "Shoe Horn", price: 7.00 }
       ]
     },
     {
-      id: "108",
-      name: "Cheeseburger",
-      description: "Juicy beef patty with melted cheese, lettuce, tomato, and pickles in a brioche bun.",
-      type: "drinks",
-      price: 11.99,
-      image: "https://images.unsplash.com/photo-1550547660-d9450f859349",
+      id: "211",
+      name: "Nike Air Max 90 Premium - Phantom/Burgundy Crush",
+      description: "Premium materials and classic design for a timeless look.",
+      type: "shoes",
+      price: 140.00,
+      image: "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/7e5d9a3f-1b2e-4f4e-9d6c-7e5d9a3f1b2e/air-max-90-mens-shoes-KkLcGR.png",
       addOns: [
-        { id: "1", name: "Bacon", price: 2.0 },
-        { id: "2", name: "Extra Cheese", price: 1.0 },
-        { id: "3", name: "Fried Egg", price: 1.5 }
-      ]
-    },
-    {
-      id: "109",
-      name: "Chocolate Lava Cake",
-      description: "Rich chocolate cake with a molten chocolate center, served with vanilla ice cream.",
-      type: "Dessert",
-      price: 7.99,
-      image: "https://images.unsplash.com/photo-1550547660-d9450f859349",
-      addOns: [
-        { id: "1", name: "Extra Ice Cream", price: 2.0 },
-        { id: "2", name: "Caramel Drizzle", price: 1.0 },
-        { id: "3", name: "Whipped Cream", price: 0.5 }
-      ]
-    },
-    {
-      id: "110",
-      name: "Mozzarella Sticks",
-      description: "Breaded mozzarella sticks served with marinara sauce.",
-      type: "brunch",
-      price: 6.99,
-      image: "https://images.unsplash.com/photo-1550547660-d9450f859349",
-      addOns: [
-        { id: "1", name: "Extra Marinara Sauce", price: 0.5 },
-        { id: "2", name: "Ranch Dressing", price: 0.5 },
-        { id: "3", name: "Hot Sauce", price: 0.5 }
-      ]
-    },
-    {
-      id: "111",
-      name: "Shrimp Scampi",
-      description: "Shrimp sautéed in garlic, lemon, and white wine sauce, served over linguine.",
-      type: "drinks",
-      price: 19.99,
-      image: "https://images.unsplash.com/photo-1550547660-d9450f859349",
-      addOns: [
-        { id: "1", name: "Extra Shrimp", price: 5.0 },
-        { id: "2", name: "Parmesan Cheese", price: 1.0 },
-        { id: "3", name: "Garlic Bread", price: 2.5 }
-      ]
-    },
-    {
-      id: "112",
-      name: "New York Cheesecake",
-      description: "Classic New York style cheesecake with a graham cracker crust.",
-      type: "Dessert",
-      price: 8.99,
-      image: "https://images.unsplash.com/photo-1550547660-d9450f859349",
-      addOns: [
-        { id: "1", name: "Strawberry Sauce", price: 1.0 },
-        { id: "2", name: "Whipped Cream", price: 0.5 },
-        { id: "3", name: "Fresh Berries", price: 2.0 }
+        { id: "1", name: "Sneaker Protector Spray", price: 15.00 },
+        { id: "2", name: "Shoe Trees", price: 20.00 },
+        { id: "3", name: "Lace Locks", price: 5.00 }
       ]
     }
-  ]
+  ];
+  
   
 
 
@@ -206,26 +213,26 @@ export default function Menu() {
     <>
     <Header />
     <div className='mt-20'>
-      <div className='flex overflow-x-hidden mt-3 px-2'>
+      <div className='flex overflow-x-hidden mt-3 px-2 lg:px-[10%]'>
         <button
           className='selection px-6 py-2'
           onClick={() => setTypeFilter("type", null)}
-        >All</button>
+        >clothes</button>
         <button
           className='selection px-4 py-2'
           onClick={() => setTypeFilter("type", "drinks")}
-        >Drinks</button>
+        >iphones</button>
         <button
           className='selection px-4 py-2'
           onClick={() => setTypeFilter("type", "brunch")}
-        >Brunch</button>
+        >samsungs</button>
         <button
           className='selection px-4 py-2'
           onClick={() => setTypeFilter("type", "pastries")}
-        >Pastries</button>
+        >shoes</button>
       </div>
 
-      <div className='flex flex-wrap justify-center items-center'>
+      <div className='flex flex-wrap justify-center items-center mt-4'>
         {fullMenu}
       </div>
     </div>
