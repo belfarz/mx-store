@@ -204,7 +204,7 @@ export default function Menu() {
   }
 
 
-  const fullMenu = filteredData.map((food, index) => (
+  const fullMenu = filteredData.slice().reverse().map((food, index) => (
     <FoodCard key={index} food={food} />
   ));
 
@@ -213,23 +213,27 @@ export default function Menu() {
     <>
     <Header />
     <div className='mt-20'>
-      <div className='flex overflow-x-hidden mt-3 px-2 lg:px-[10%]'>
+      <div className='flex overflow-x-scroll mt-3 px-2 lg:px-[10%]'>
         <button
           className='selection px-6 py-2'
           onClick={() => setTypeFilter("type", null)}
-        >clothes</button>
+        >All</button>
         <button
           className='selection px-4 py-2'
-          onClick={() => setTypeFilter("type", "drinks")}
+          onClick={() => setTypeFilter("type", "iphone")}
         >iphones</button>
         <button
           className='selection px-4 py-2'
-          onClick={() => setTypeFilter("type", "brunch")}
+          onClick={() => setTypeFilter("type", "samsung")}
         >samsungs</button>
         <button
           className='selection px-4 py-2'
-          onClick={() => setTypeFilter("type", "pastries")}
+          onClick={() => setTypeFilter("type", "shoe")}
         >shoes</button>
+         <button
+          className='selection px-4 py-2'
+          onClick={() => setTypeFilter("type", "console")}
+        >console</button>
       </div>
 
       <div className='flex flex-wrap justify-start lg:px-[10%] mt-4'>

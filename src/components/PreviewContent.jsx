@@ -19,7 +19,7 @@ export default function PreviewContent({ food, setOpen }) {
   // const [addons, setAddons] = useState([]);
   // const [price, setPrice] = useState(food.price)
 
-  const addToCart =()=>{
+  const addToCart = () => {
 
     const order = {
       id: food.id,
@@ -67,31 +67,23 @@ export default function PreviewContent({ food, setOpen }) {
   //   </div>
   // ))
 
+
+
   return (
     <div className=' pb-12 h-full' style={{ backgroundColor: "#FFF7ED" }}>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-        <SwiperSlide>
-        <div className=' flex justify-center p-4'>
-        <img className="relative h-[40vh] bg-center" src={food.image} alt="" />
-      </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className=' flex justify-center p-4'>
-        <img className="relative h-[40vh] bg-center" src={food.image} alt="" />
-      </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className=' flex justify-center p-4'>
-        <img className="relative h-[40vh] bg-center" src={food.image} alt="" />
-      </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className=' flex justify-center p-4'>
-        <img className="relative h-[40vh] bg-center" src={food.image} alt="" />
-      </div>
-        </SwiperSlide>
+        {
+          food.images?.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div className='flex justify-center p-4'>
+                <img className="relative h-[40vh] bg-center" src={item} alt={`food-${index}`} />
+              </div>
+            </SwiperSlide>
+          ))
+        }
+
       </Swiper>
-      
+
 
       <div className="mx-auto p-4 ">
         <h1 className=' text-xl'>{food.name}</h1>
@@ -108,10 +100,10 @@ export default function PreviewContent({ food, setOpen }) {
       </div> */}
 
       <div className='flex w-full px-4 justify-around ' >
-      
+
         <button className=' bg-orange-300 py-4 px-8 w-full rounded-xl' onClick={addToCart}>Add {food.price}
           {/* <span>${(price * count).toFixed(2)}</span> */}
-          </button>
+        </button>
       </div>
 
     </div>
